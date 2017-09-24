@@ -5,9 +5,10 @@ class BooksController < ApplicationController
     respond_to do |format|
       format.html
       format.text
+      format.json {render json: @books}
+      format.csv do |book|
+      book.generate_csv {render text: @books.to_csv}
 
-    format.csv do |book|
-    book.generate_csv {render text: @books.to_csv}
 
 
 
